@@ -1,16 +1,13 @@
-package co.com.poli.cinema;
+package com.example.showtimes;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-
-
-
 @SpringBootApplication
-public class CinemaApplication {
+public class ShowtimesApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CinemaApplication.class, args);
+		SpringApplication.run(ShowtimesApplication.class, args);
 	}
 
 }

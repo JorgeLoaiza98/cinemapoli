@@ -1,16 +1,13 @@
-package co.com.poli.cinema;
+package com.example.bookings;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-
-
-
 @SpringBootApplication
-public class CinemaApplication {
+public class BookingsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CinemaApplication.class, args);
+		SpringApplication.run(BookingsApplication.class, args);
 	}
 
 }

@@ -1,42 +1,38 @@
-package co.com.poli.cinema.entities;
+package com.example.customer.entities;
 
 
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 import java.util.Objects;
 
 @Setter
 @Getter
 @Entity
-@Table(name="movies")
+@Table(name="users")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Movie {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false,nullable = false,unique = true)
     private Long id;
-    @NotEmpty(message = "El titulo no debe ser vacio")
-    @Column(name="tittle",nullable = false)
-    private String tittle;
-    @NotEmpty(message = "El director no debe ser vacio")
-    @Column(name="director",nullable = false)
-    private String director;
-    @Column(name="rating")
-    private int rating;
+    @NotEmpty(message = "El nombre no debe ser vacio")
+    @Column(name="name" ,nullable = false)
+    private String name;
+    @NotEmpty(message = "El apellido no debe ser vacio")
+    @Column(name="lastname" ,nullable = false)
+    private String lastname;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Movie movie = (Movie) o;
-        return Objects.equals(id, movie.id);
+        User user = (User) o;
+        return Objects.equals(id, user.id);
     }
 
     @Override
@@ -44,6 +40,3 @@ public class Movie {
         return Objects.hash(id);
     }
 }
-
-
-

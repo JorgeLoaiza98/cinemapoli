@@ -2,7 +2,6 @@ package co.com.poli.cinema.services;
 
 
 import co.com.poli.cinema.entities.Movie;
-import co.com.poli.cinema.entities.ShowTimes;
 import co.com.poli.cinema.repositories.MovieRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
