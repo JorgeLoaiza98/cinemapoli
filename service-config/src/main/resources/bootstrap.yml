@@ -11,4 +11,4 @@ spring:
       name: admin
       password: admin
 server:
-  port: 9000
+  port: 8888
