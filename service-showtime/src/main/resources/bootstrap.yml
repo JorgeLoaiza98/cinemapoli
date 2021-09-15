@@ -1,5 +1,8 @@
-server:
-  port: 9200
 spring:
   application:
-    name: service-cinema
+    name: service-showtime
+  cloud:
+    config:
+      uri: http://localhost:9000
+      username: admin
+      password: admin

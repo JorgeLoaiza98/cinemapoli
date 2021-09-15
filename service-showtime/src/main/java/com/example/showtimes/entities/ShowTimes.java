@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.List;
 import java.util.Objects;
 
 @Setter
@@ -20,10 +21,11 @@ public class ShowTimes {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false,nullable = false,unique = true)
     private Long id;
-
     @NotEmpty(message = "La fecha no debe estar vacio")
     @Column(name="date")
     private String date;
+    @Column(name = "movies_id")
+    private List<Long> movies_id;
 
 
     @Override

@@ -10,5 +10,6 @@ public interface BookingsServices {
     void delete(Bookings bookings);
     List<Bookings> findAll();
     Bookings findById(Long id);
+    Bookings findByUser_id(Long user_id);
 
 }

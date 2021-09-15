@@ -10,6 +10,5 @@ import java.util.List;
 
 @Repository
 public interface BookingsRepository extends JpaRepository<Bookings,Long> {
-
-
+    Bookings findByUser_id(Long user_id);
 }

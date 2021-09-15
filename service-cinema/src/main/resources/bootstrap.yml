@@ -1,5 +1,8 @@
-server:
-  port: 8080
 spring:
   application:
     name: service-cinema
+  cloud:
+    config:
+      uri: http://localhost:9000
+      username: admin
+      password: admin

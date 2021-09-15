@@ -68,6 +68,14 @@ public class BookingsController
         return ResponseEntity.ok(bookings);
     }
 
+    @GetMapping("/user_id/{user_id}")
+    public Response findByUser_id(@PathVariable("user_id") Long user_id, BindingResult result){
+        Bookings bookings = bookingsServices.findByUser_id(user_id);
+        if(result.hasErrors()){
+            return builder.failed(formatMessage(result));
+        }
+        return builder.success(bookings);
+    }
 
 
 

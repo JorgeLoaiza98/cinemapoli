@@ -1,5 +1,8 @@
-server:
-  port: 9010
 spring:
   application:
-    name: service-cinema
+    name: service-booking
+  cloud:
+    config:
+      uri: http://localhost:9000
+      username: admin
+      password: admin

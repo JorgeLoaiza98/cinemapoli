@@ -67,6 +67,18 @@ public class ShowTimesController {
         return ResponseEntity.ok(showtimes);
     }
 
+    @PutMapping("/{id}")
+    public Response updateShowTime(@Valid @PathVariable(value = "id") Long showtimeId,  @RequestBody ShowTimes showtimesDetails, BindingResult result) {
+        ShowTimes showtimes = showtimesServices.findById(showtimeId);
+        if(result.hasErrors()){
+            return builder.failed(formatMessage(result));
+        }
+        showtimes.setDate(showtimesDetails.getDate());
+        showtimes.setMovies_id(showtimesDetails.getMovies_id());
+
+        showtimesServices.save(showtimes);
+        return builder.success(showtimes);
+    }
 
 
 

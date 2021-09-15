@@ -5,8 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.Valid;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.util.Objects;
 
 @Setter
@@ -28,6 +27,8 @@ public class Movie {
     @NotEmpty(message = "El director no debe ser vacio")
     @Column(name="director",nullable = false)
     private String director;
+    @Min(value = 1, message = "El valor del raiting no puede ser menor a 1")
+    @Max(value = 5, message = "El valor del raiting no puede ser mayor a 5")
     @Column(name="rating")
     private int rating;
 

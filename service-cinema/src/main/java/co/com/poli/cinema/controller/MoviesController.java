@@ -58,12 +58,12 @@ public class MoviesController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Movie> findById(@PathVariable("id") Long id){
+    public Response findById(@Valid @PathVariable("id") Long id, BindingResult result){
         Movie movie = movieServices.findById(id);
-        if(movie==null){
-            return ResponseEntity.notFound().build();
+        if(result.hasErrors()){
+            return builder.failed(formatMessage(result));
         }
-        return ResponseEntity.ok(movie);
+        return builder.success(movie);
     }
 
 
