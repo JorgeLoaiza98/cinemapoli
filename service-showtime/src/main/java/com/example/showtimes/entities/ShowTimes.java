@@ -1,9 +1,11 @@
 package com.example.showtimes.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import java.util.List;
 import java.util.Objects;
@@ -11,7 +13,7 @@ import java.util.Objects;
 @Setter
 @Getter
 @Entity
-@Table(name="showtimes")
+@Table(name="showtime")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -22,11 +24,8 @@ public class ShowTimes {
     @Column(name = "id", updatable = false,nullable = false,unique = true)
     private Long id;
     @NotEmpty(message = "La fecha no debe estar vacio")
-    @Column(name="date")
-    private String date;
-    @Column(name = "movies_id")
-    private List<Long> movies_id;
-
+    @Column(name="fecha_funcion")
+    private String fecha_funcion;
 
     @Override
     public boolean equals(Object o) {

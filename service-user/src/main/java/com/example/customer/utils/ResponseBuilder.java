@@ -1,9 +1,12 @@
-package co.com.poli.cinema.utils;
+package com.example.customer.utils;
 
 
 
-import static org.springframework.http.HttpStatus.*;
+
 import org.springframework.stereotype.Component;
+
+import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
+import static org.springframework.http.HttpStatus.OK;
 
 @Component
 public class ResponseBuilder {

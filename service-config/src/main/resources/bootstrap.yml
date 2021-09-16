@@ -5,7 +5,7 @@ spring:
     config:
       server:
         git:
-          uri: file:///C:/Profundizacion/config-data
+          uri: file:///D:/cinemapoli/config-data
   security:
     user:
       name: admin

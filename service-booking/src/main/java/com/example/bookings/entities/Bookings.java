@@ -34,7 +34,7 @@ public class Bookings {
     @Column(name = "user_id")
     private Long user_id;
     @Column(name = "movies_id")
-    private List<Long> movies_id;
+    private Long movies_id;
     @Transient
     private Movie movie;
     @Transient
