@@ -39,23 +39,22 @@ public class UserController {
 
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<User> delete(@PathVariable("id") Long id) {
+    public Response delete(@PathVariable("id") Long id , BindingResult result) {
         User user = userServices.findById(id);
-        if (user == null) {
-            return ResponseEntity.notFound().build();
-
+        if(result.hasErrors()){
+            return builder.failed(formatMessage(result));
         }
         userServices.delete(user);
-        return ResponseEntity.ok(user);
+        return builder.success(user);
     }
 
     @GetMapping
-    public ResponseEntity<List<User>> findAll(){
+    public Response findAll(BindingResult result){
         List<User> user = userServices.findAll();
-        if(user.isEmpty()){
-            return ResponseEntity.noContent().build();
+        if(result.hasErrors()){
+            return builder.failed(formatMessage(result));
         }
-        return ResponseEntity.ok(user);
+        return builder.success(user);
     }
 
     @GetMapping("/{id}")

@@ -38,23 +38,22 @@ public class MoviesController {
 
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Movie> delete(@PathVariable("id") Long id) {
+    public Response delete(@PathVariable("id") Long id, BindingResult result) {
         Movie movie = movieServices.findById(id);
-        if (movie == null) {
-            return ResponseEntity.notFound().build();
-
+        if(result.hasErrors()){
+            return builder.failed(formatMessage(result));
         }
         movieServices.delete(movie);
-        return ResponseEntity.ok(movie);
+        return builder.success(movie);
     }
 
     @GetMapping
-    public ResponseEntity<List<Movie>> findAll(){
+    public Response findAll(BindingResult result){
         List<Movie> movie = movieServices.findAll();
-        if(movie.isEmpty()){
-            return ResponseEntity.noContent().build();
+        if(result.hasErrors()){
+            return builder.failed(formatMessage(result));
         }
-        return ResponseEntity.ok(movie);
+        return builder.success(movie);
     }
 
     @GetMapping("/{id}")

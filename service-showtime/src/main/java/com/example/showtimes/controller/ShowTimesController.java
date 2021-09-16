@@ -39,32 +39,31 @@ public class ShowTimesController {
 
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<ShowTimes> delete(@PathVariable("id") Long id) {
+    public Response delete(@PathVariable("id") Long id, BindingResult result) {
         ShowTimes showtimes = showtimesServices.findById(id);
-        if (showtimes == null) {
-            return ResponseEntity.notFound().build();
-
+        if(result.hasErrors()){
+            return builder.failed(formatMessage(result));
         }
         showtimesServices.delete(showtimes);
-        return ResponseEntity.ok(showtimes);
+        return builder.success(showtimes);
     }
 
     @GetMapping
-    public ResponseEntity<List<ShowTimes>> findAll(){
+    public Response findAll(BindingResult result){
         List<ShowTimes> showtimes = showtimesServices.findAll();
-        if(showtimes.isEmpty()){
-            return ResponseEntity.noContent().build();
+        if(result.hasErrors()){
+            return builder.failed(formatMessage(result));
         }
-        return ResponseEntity.ok(showtimes);
+        return builder.success(showtimes);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ShowTimes> findById(@PathVariable("id") Long id){
+    public Response findById(@PathVariable("id") Long id, BindingResult result){
         ShowTimes showtimes = showtimesServices.findById(id);
-        if(showtimes==null){
-            return ResponseEntity.notFound().build();
+        if(result.hasErrors()){
+            return builder.failed(formatMessage(result));
         }
-        return ResponseEntity.ok(showtimes);
+        return builder.success(showtimes);
     }
 
     @PutMapping("/{id}")

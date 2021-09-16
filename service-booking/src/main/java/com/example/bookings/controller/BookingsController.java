@@ -40,32 +40,31 @@ public class BookingsController
 
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Bookings> delete(@PathVariable("id") Long id) {
+    public Response delete(@PathVariable("id") Long id, BindingResult result) {
         Bookings bookings = bookingsServices.findById(id);
-        if (bookings == null) {
-            return ResponseEntity.notFound().build();
-
+        if(result.hasErrors()){
+            return builder.failed(formatMessage(result));
         }
         bookingsServices.delete(bookings);
-        return ResponseEntity.ok(bookings);
+        return builder.success(bookings);
     }
 
     @GetMapping
-    public ResponseEntity<List<Bookings>> findAll(){
+    public Response findAll(BindingResult result){
         List<Bookings> bookings = bookingsServices.findAll();
-        if(bookings.isEmpty()){
-            return ResponseEntity.noContent().build();
+        if(result.hasErrors()){
+            return builder.failed(formatMessage(result));
         }
-        return ResponseEntity.ok(bookings);
+        return builder.success(bookings);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Bookings> findById(@PathVariable("id") Long id){
+    public Response findById(@PathVariable("id") Long id , BindingResult result){
         Bookings bookings = bookingsServices.findById(id);
-        if(bookings==null){
-            return ResponseEntity.notFound().build();
+        if(result.hasErrors()){
+            return builder.failed(formatMessage(result));
         }
-        return ResponseEntity.ok(bookings);
+        return builder.success(bookings);
     }
 
     @GetMapping("/user_id/{user_id}")
