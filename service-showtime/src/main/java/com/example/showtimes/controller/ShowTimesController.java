@@ -3,9 +3,9 @@ package com.example.showtimes.controller;
 
 import com.example.showtimes.services.ShowTimesServices;
 import com.example.showtimes.entities.ShowTimes;
-import co.com.poli.cinema.utils.ErrorMessage;
-import co.com.poli.cinema.utils.Response;
-import co.com.poli.cinema.utils.ResponseBuilder;
+import com.example.showtimes.utils.ErrorMessage;
+import com.example.showtimes.utils.Response;
+import com.example.showtimes.utils.ResponseBuilder;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
@@ -73,8 +73,7 @@ public class ShowTimesController {
         if(result.hasErrors()){
             return builder.failed(formatMessage(result));
         }
-        showtimes.setDate(showtimesDetails.getDate());
-        showtimes.setMovies_id(showtimesDetails.getMovies_id());
+        showtimes.setFecha_funcion(showtimesDetails.getFecha_funcion());
 
         showtimesServices.save(showtimes);
         return builder.success(showtimes);

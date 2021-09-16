@@ -21,10 +21,10 @@ public class User {
     @Column(name = "id", updatable = false,nullable = false,unique = true)
     private Long id;
     @NotEmpty(message = "El nombre no debe ser vacio")
-    @Column(name="name" ,nullable = false)
+    @Column(name="nombre" ,nullable = false)
     private String name;
     @NotEmpty(message = "El apellido no debe ser vacio")
-    @Column(name="lastname" ,nullable = false)
+    @Column(name="apellido" ,nullable = false)
     private String lastname;
 
     @Override

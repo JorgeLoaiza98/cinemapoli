@@ -1,4 +1,4 @@
-package co.com.poli.cinema.utils;
+package com.example.showtimes.utils;
 
 
 import lombok.Builder;

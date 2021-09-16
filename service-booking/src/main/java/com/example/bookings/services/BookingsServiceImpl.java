@@ -51,13 +51,7 @@ public class BookingsServiceImpl implements BookingsServices {
                         User.class);
         bookings.setUser(user);
 
-        List<Booki> itemList = invoice.getItems().stream()
-                .map(invoiceItem -> {
-                    Product product = modelMapper.map(productClient.findById(invoiceItem.getProductId()).getData(),Product.class);
-                    invoiceItem.setProduct(product);
-                    return invoiceItem;
-                }).collect(Collectors.toList());
-        return invoiceRepository.findByNumberInvoice(numberInvoice);
+        return bookingsRepository.findByUser_id(user_id);
     }
 
 

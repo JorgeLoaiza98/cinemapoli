@@ -22,13 +22,13 @@ public class Movie {
     @Column(name = "id", updatable = false,nullable = false,unique = true)
     private Long id;
     @NotEmpty(message = "El titulo no debe ser vacio")
-    @Column(name="tittle",nullable = false)
-    private String tittle;
+    @Column(name="title",nullable = false)
+    private String title;
     @NotEmpty(message = "El director no debe ser vacio")
     @Column(name="director",nullable = false)
     private String director;
-    @Min(value = 1, message = "El valor del raiting no puede ser menor a 1")
-    @Max(value = 5, message = "El valor del raiting no puede ser mayor a 5")
+    @Min(value = 1, message = "El valor del rating no puede ser menor a 1")
+    @Max(value = 5, message = "El valor del rating no puede ser mayor a 5")
     @Column(name="rating")
     private int rating;
 

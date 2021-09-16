@@ -3,9 +3,9 @@ package com.example.customer.controller;
 
 import com.example.customer.entities.User;
 import com.example.customer.services.UserServices;
-import co.com.poli.cinema.utils.ErrorMessage;
-import co.com.poli.cinema.utils.Response;
-import co.com.poli.cinema.utils.ResponseBuilder;
+import com.example.customer.utils.ResponseBuilder;
+import com.example.customer.utils.Response;
+import com.example.customer.utils.ErrorMessage;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
