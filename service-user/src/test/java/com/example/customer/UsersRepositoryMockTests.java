@@ -1,26 +1,29 @@
 package com.example.customer;
 
-import co.com.poli.cinema.repositories.UserRepository;
-import co.com.poli.cinema.entities.User;
-import org.junit.jupiter.api.Test;
+import com.example.customer.entities.User;
+import com.example.customer.repositories.UserRepository;
+import org.assertj.core.api.Assertions;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+
 import java.util.List;
+import java.util.Optional;
 
 @DataJpaTest
-public class UsersRepositoriyMockTest{
-
+public class UsersRepositoryMockTests{
     @Autowired
     private UserRepository userRepository;
 
     @Test
-    public void when_findUserList_return_List<User>(){
-        User user = new User.builder()
-                .name("James")
-                .lastname("Wan")
+    public void when_findUserList_return_List(){
+        User user = User.builder()
+                .id(3L)
+                .name("Maria")
+                .lastname("Prueba")
                 .build();
         userRepository.save(user);
-        List<User> users = userRepository.findUserList(user);
-        Assertions.assertThat(users.sixe()).isEqualTo(2);
+        List<User> users = userRepository.findAll();
+        Assertions.assertThat(users.size()).isEqualTo(1);
     }
 }

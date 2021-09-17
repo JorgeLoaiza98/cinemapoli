@@ -1,37 +1,35 @@
 package com.example.customer;
 
-import co.com.poli.cinema.services.UserServices;
-import co.com.poli.cinema.services.UserServiceImpl;
-import co.com.poli.cinema.entities.User;
-import co.com.poli.cinema.repositories.UserRepository;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.mockito.Mock;
+import com.example.customer.entities.User;
+import com.example.customer.repositories.UserRepository;
+import com.example.customer.services.UserServiceImpl;
+import com.example.customer.services.UserServices;
 import org.junit.jupiter.api.BeforeEach;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
+import org.springframework.boot.test.context.SpringBootTest;
 
-import
+import java.util.Optional;
 
 @SpringBootTest
 public class UserServiceMockTests{
-
     @Mock
     private UserRepository userRepository;
-    private UserServices UserServices;
+    private UserServices userService;
 
     @BeforeEach
-    public void begin();
-        MockitoAnnotations.initMocks(testClass:this);
-        UserServices = new UserServiceImpl(userRepository);
-        User user = new User.builder()
-            .id(4L)
-            .name("James")
-            .lastname("Wan")
-            .build();
-        Mockito.when(userRepository.findById(4L)).thenReturn(Optional.of(user))
-    }
+    public void begin(){
+        MockitoAnnotations.initMocks(this);
+        userService = new UserServiceImpl(userRepository);
 
-    @Test
-    public void when_findById_return_user() {
-        User user1 = UserServices.findById(4L);
-        Assertions.assertThat(user1.getName).isEqualTo("James");
+        User user = User.builder()
+                .id(3L)
+                .name("Alex")
+                .lastname("Gomez")
+                .build();
+
+        Mockito.when(userRepository.findById(3L))
+                .thenReturn(Optional.of(user));
     }
 }
