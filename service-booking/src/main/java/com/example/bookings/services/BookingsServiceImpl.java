@@ -10,7 +10,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.modelmapper.ModelMapper;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -53,7 +52,5 @@ public class BookingsServiceImpl implements BookingsServices {
 
         return bookingsRepository.findByUser_id(user_id);
     }
-
-
 
 }

@@ -4,7 +4,6 @@ package co.com.poli.cinema.entities;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.Objects;
 
@@ -44,6 +43,7 @@ public class Movie {
     public int hashCode() {
         return Objects.hash(id);
     }
+
 }
 
 
